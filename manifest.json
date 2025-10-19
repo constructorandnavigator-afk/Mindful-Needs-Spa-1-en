@@ -1,6 +1,6 @@
 {
-  "Mindful-Needs-Spa-1-en",
-  "short_name": "SPA",
+  "name": "Mindful-Needs-Spa-1-en",
+  "short_name": "SPA-EN",
   "description": "Add App to your Home Screen",
   "start_url": "index.html",
   "display": "standalone",
@@ -19,4 +19,3 @@
     }
   ]
 }
-
