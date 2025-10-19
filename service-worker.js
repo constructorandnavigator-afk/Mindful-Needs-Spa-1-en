@@ -1,15 +1,16 @@
 const CACHE_NAME = 'spa-cache-v2';
 const urlsToCache = [
-  'index.html',
-  'manifest.json',
-  'Mindful_Needs_Digital_Spa_Logo.png',
-  'logobriga.png',
-  'LogoLjubav.png',
-  'LogoRiskTrack.png',
-  'Worry.html',
-  'Love.html',
-  'Gambling.html'
+  './index.html',
+  './manifest.json',
+  './Mindful_Needs_Digital_Spa_Logo.png',
+  './logobriga.png',
+  './LogoLjubav.png',
+  './LogoRiskTrack.png',
+  './Worry.html',
+  './Love.html',
+  './Gambling.html'
 ];
+
 
 
 self.addEventListener('install', (event) => {
@@ -41,6 +42,7 @@ self.addEventListener('fetch', (event) => {
       })
   );
 });
+
 
 
 
