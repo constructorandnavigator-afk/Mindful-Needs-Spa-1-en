@@ -2,18 +2,18 @@
   "name": "Mindful-Needs-Spa-1-en",
   "short_name": "SPA-EN",
   "description": "Add App to your Home Screen",
-  "start_url": "index.html",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f9f9f9",
   "theme_color": "#333333",
   "icons": [
     {
-      "src": "Mindful_Needs_Digital_Spa_Logo.png",
+      "src": "./Mindful_Needs_Digital_Spa_Logo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "Mindful_Needs_Digital_Spa_Logo.png",
+      "src": "./Mindful_Needs_Digital_Spa_Logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }
