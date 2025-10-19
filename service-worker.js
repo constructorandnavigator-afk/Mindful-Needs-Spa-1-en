@@ -1,4 +1,4 @@
-const CACHE_NAME = 'spa-cache-v1';
+const CACHE_NAME = 'spa-cache-v2';
 const urlsToCache = [
   'index.html',
   'manifest.json',
@@ -41,3 +41,4 @@ self.addEventListener('fetch', (event) => {
       })
   );
 });
+
