@@ -2,7 +2,6 @@ const CACHE_NAME = 'spa-cache-v2';
 const urlsToCache = [
   'index.html',
   'manifest.json',
-  'KissVaultLogo.png',
   'Mindful_Needs_Digital_Spa_Logo.png',
   'logobriga.png',
   'LogoLjubav.png',
@@ -11,6 +10,7 @@ const urlsToCache = [
   'Love.html',
   'gambling.html'
 ];
+
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -41,4 +41,5 @@ self.addEventListener('fetch', (event) => {
       })
   );
 });
+
 
