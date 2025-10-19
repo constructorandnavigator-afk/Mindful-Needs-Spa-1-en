@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Love Protokol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <style>
+    html, body {
+    overflow-y: auto;
+   -webkit-overflow-scrolling: touch; /* Za glatko skrolovanje na iOS-u */
+   }
+
+
+    .progress-container {
+      width: 100%;
+      background-color: #f0dbe5;
+      height: 6px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background-color: #d46a92;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .screen {
+      display: none;
+      padding: 20px;
+      background: #ffffff;
+      color: #444;
+      min-height: 100vh; /* koristi min-height da omogući skrolovanje ako je sadržaj veći */
+      padding-bottom: 80px; /* prostor za futer, dovoljno da se ne preklapa */
+      overflow-y: auto;
+     -webkit-overflow-scrolling: touch;
+    }
+     
+     .screen.active {
+      display: block;
+    }
+
+    .logo {
+      width: 100px;
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+    h2 {
+      color: #b05f6d;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    p {
+      background: #fdf2f6;
+      padding: 12px;
+      margin: 10px 0;
+      border-left: 4px solid #d46a92;
+      border-radius: 8px;
+      line-height: 1.6em;
+    }
+
+    button {
+      background-color: #d46a92;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1em;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button:hover {
+      background-color: #c05182;
+    }
+
+    .header-text {
+      background-color: #d46a92;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .logo {
+        width: 80px;
+      }
+
+      .progress-container {
+        height: 4px;
+      }
+
+      .screen {
+        padding: 15px;
+      }
+
+      button {
+        padding: 8px 16px;
+        font-size: 0.9em;
+      }
+
+      h2 {
+        font-size: 1.5em;
+      }
+
+      p {
+        font-size: 1em;
+      }
+    }
+@media (max-width: 400px) {
+  body {
+    font-size: 13px;
+  }
+
+  .logo {
+    width: 60px;
+  }
+
+  .header-text {
+    font-size: 1.2em;
+    padding: 8px 0;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  p {
+    font-size: 0.95em;
+    padding: 10px;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 0.85em;
+  }
+
+  .screen {
+    padding: 12px;
+  }
+
+  .progress-container {
+    height: 3px;
+  }
+
+  .progress-bar {
+    height: 3px;
+  }
+
+ }
+
+.header-text {
+  margin-bottom: 20px; /* Razmak između glavnog teksta i sledećeg dela */
+}
+
+.pocket-solution, .pocket-essentials {
+  background-color: #f0f0f0; /* Pozadina za ove delove */
+  padding: 10px; /* Unutrašnji razmak unutar pozadine */
+  margin-top: 10px; /* Razmak između header teksta i novih div-ova */
+  border-radius: 5px; /* Zaobljeni uglovi pozadine */
+}
+
+.pocket-solution {
+  font-weight: bold; /* Isticanje teksta u pocket-solution */
+}
+
+.pocket-essentials {
+  color: #555; /* Možeš promeniti boju za drugi deo teksta */
+}
+
+   </style>
+</head>
+<body>
+
+<div class="header-text">
+  Loyalty, Openness, Virtue, Empowerment
+  <div class="pocket-solution"><strong>Small Pocket Solution</strong></div>
+  <div class="pocket-essentials">Pocket Essentials Collection</div>
+</div>
+
+
+<div class="progress-container">
+  <div class="progress-bar" id="progress-bar"></div>
+</div>
+
+<div class="screen active" id="intro-screen">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Welcome to the Love App</h2>
+  <p>This app helps you understand, strengthen, and nurture love – towards yourself and others.</p>
+  <p>Love is the most important journey. It deserves your attention.</p>
+  <button onclick="nextScreen()">Start</button>
+</div>
+
+<div class="screen" id="screen-1">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Self-Confidence</h2>
+  <p><strong>Accept your imperfections.</strong> You can never be perfect, and that's completely fine...</p>
+  <p><strong>Set realistic goals.</strong> Start with small, achievable goals...</p>
+  <p><strong>Foster positive self-talk.</strong> Stop telling yourself you're not good enough...</p>
+  <p><strong>Surround yourself with supportive people.</strong> The people you associate with...</p>
+  <p><strong>Practice gratitude.</strong> Focus on what you have...</p>
+  <button onclick="nextScreen()">I am worthy</button>
+</div>
+
+<div class="screen" id="screen-2">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Respect</h2>
+  <p><strong>Respect differences.</strong> You don't have to think the same to love...</p>
+  <p><strong>Boundaries are not walls.</strong> When set together...</p>
+  <p><strong>Honor your partner's feelings and experiences.</strong> Even if you don't fully understand...</p>
+  <p><strong>Respect is shown in small things</strong> – tone of voice...</p>
+  <p><strong>Arguments don't mean the end</strong> – but the way you argue...</p>
+  <button onclick="nextScreen()">I respect differences</button>
+</div>
+
+<div class="screen" id="screen-3">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Getting to Know Each Other</h2>
+  <p><strong>Be yourself.</strong> The first impression doesn't have to be perfect...</p>
+  <p><strong>Listen actively.</strong> People open up where they feel someone truly listens...</p>
+  <p><strong>Shared values matter.</strong> Think about whether you share...</p>
+  <p><strong>Don’t rush idealizing.</strong> First, get to know the person...</p>
+  <p><strong>Set digital boundaries.</strong> Respect applies both online and in person.</p>
+  <button onclick="nextScreen()">We’ll get to know each other</button>
+</div>
+
+<div class="screen" id="screen-4">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Divorce</h2>
+  <p><strong>Divorce is not a failure.</strong> Often it's a brave decision...</p>
+  <p><strong>Communicate clearly.</strong> Especially if you have children...</p>
+  <p><strong>Write down your feelings.</strong> Clarify thoughts...</p>
+  <p><strong>Use your experience.</strong> You're not starting from scratch...</p>
+  <button onclick="nextScreen()">Life goes on</button>
+</div>
+
+<div class="screen" id="screen-5">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Orientation Towards Your Partner</h2>
+  <p><strong>Be present.</strong> Small things – a glance, a smile, listening...</p>
+  <p><strong>Show empathy.</strong> Listen without interrupting...</p>
+  <p><strong>Repeat small gestures.</strong> Support, celebration...</p>
+  <p><strong>Pause in conflict.</strong> Ask: “What is my partner trying to tell me?”...</p>
+  <button onclick="nextScreen()">I'm here</button>
+</div>
+
+<div class="screen" id="screen-6">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Infidelity in a relationship</h2>
+  <p>Signs of infidelity do not automatically mean the end...</p>
+  <p>Understand what led to the infidelity...</p>
+  <p>Trust is built, but difficult to restore...</p>
+  <p>The decision to forgive or leave must come from within...</p>
+  <p>The digital world is a new zone of infidelity...</p>
+  <button onclick="nextScreen()">I choose my path</button>
+</div>
+
+<div class="screen" id="screen-7">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Conflict resolution</h2>
+  <p>Conflict is not a sign of a bad relationship – it is an opportunity for growth...</p>
+  <p>Listening is an active skill...</p>
+  <p>Don’t wait for things to get complicated...</p>
+  <p>Don’t seek to win – seek a solution...</p>
+  <p>Introduce a "pause" rule if tensions rise...</p>
+  <button onclick="nextScreen()">We choose a solution</button>
+</div>
+
+<!-- Screen 8 -->
+<div class="screen" id="screen-8">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Love language</h2>
+  <p>Different people show love differently. Your way may not be the same as your partner’s – so don’t rely solely on what would mean something to you.Discover your partner’s love language. Do they react more to words, touches, gifts, help, or time spent together? This can completely change the dynamic of the relationship.</p>
+  <p>Expressing love should be a daily thing. Small repeated gestures strengthen security and connection.Don’t expect your partner to read your mind. If something matters to you – say it clearly. Openness saves a lot of frustration.Love and infatuation are not the same. Infatuation is the initial impulse, while love is built over time, trust, and commitment.</p>
+  <button onclick="nextScreen()">I show love</button>
+</div>
+
+<!-- Screen 9 -->
+<div class="screen" id="screen-9">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Emotional abuse</h2>
+  <p>Abuse is not just physical. If your partner belittles your feelings, uses guilt, or controls your decisions – that is a form of emotional abuse.</p>
+  <p>Manipulation often comes covertly. If you often ask yourself if you are guilty, or question yourself without reason – check if someone is manipulating you.This type of abuse creates doubt in your own reality.</p> 
+  <button onclick="nextScreen()">I recognize abuse</button>
+</div>
+
+<!-- Screen 10 -->
+<div class="screen" id="screen-10">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Manipulation</h2>
+  <p>If your partner persistently denies something you are sure happened, that is a serious sign of manipulation.</p>
+  <p>You have the right to leave a toxic relationship. Love is not an excuse for enduring abuse – help exists, and it’s not shameful to seek it.Confide in someone you trust. 
+  <p>The first step out of an abusive relationship is often a conversation with a friend, family, or professional.</p>
+  <button onclick="nextScreen()">I choose the truth</button>
+</div>
+
+<!-- Screen 11 -->
+<div class="screen" id="screen-11">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Building a Healthy Relationship</h2>
+  <p>A relationship should not define you. A healthy relationship means maintaining your identity, goals, and values.</p>
+  <p>Be emotionally stable both within and outside the relationship. If you draw happiness solely from your partner, you will be vulnerable. Work on yourself both in and out of the relationship.</p>
+  <p>Learn new skills. Hobbies, knowledge, or new challenges boost your confidence and bring freshness to the relationship.</p>
+  <button onclick="nextScreen()">I want a healthy relationship</button>
+</div>
+
+<!-- Screen 12 -->
+<div class="screen" id="screen-12">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Personal growth</h2>
+  <p>Don’t forget your friends and family. Maintaining other relationships ensures emotional balance and a healthier dynamic in the relationship.</p>
+  <p>Set personal goals. Love is important, but your dreams and ambitions are equally valuable – they make you whole.</p>
+  <button onclick="nextScreen()">Balanced life</button>
+</div>
+
+<!-- Screen 13 -->
+<div class="screen" id="screen-13">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Children and the Relationship</h2>
+  <p><strong>Children change the relationship.</strong> They are a joy, but they require time and energy. It’s important to adapt to new dynamics.<p><strong>Parenting is a team effort.</strong> Work together as partners to raise your children. Mutual support is key.</p>
+  <p><strong>Balance is important.</strong> While children should be a priority, don’t neglect your relationship. Regular time for just the two of you helps maintain the bond.</p>
+  <button onclick="nextScreen()">Together in parenting</button>
+</div>
+
+<!-- Screen 14 -->
+<div class="screen" id="screen-14">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Example</h2>
+  <p><strong>Discuss parenting approaches.</strong> Different opinions on how to raise children are natural, but it’s crucial to have aligned values for the sake of your family.</p>
+  <p><strong>Lead by example.</strong> Children learn a lot from what they see in your relationship. Show them how respect, love, and patience should be expressed.</p>
+  <button onclick="nextScreen()">Harmony in the family</button>
+</div>
+
+<!-- Screen 15 -->
+<div class="screen" id="screen-15">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Personal Independence</h2>
+  <p>Being in a relationship doesn’t mean losing yourself. You still have the right to your own dreams, thoughts, and boundaries.</p>
+  <p>Enjoy your own time. Independence nurtures inner peace and brings balance to the relationship.</p>
+  <p>Learn to solve problems on your own – it makes you stronger both inside and outside the relationship.</p>
+  <p>A healthy relationship gives you wings, not binds. If you feel restricted – pause and think.The balance between “we” and “I” keeps the relationship alive.</p>
+  <button onclick="nextScreen()">I stay true to myself</button>
+</div>
+
+<!-- Screen 16 -->
+<div class="screen" id="screen-16">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Shared Goals</h2>
+  <p>Sit down and talk about the future. Planning brings you closer – and reveals how aligned you are.</p>
+  <p>Big goals start with small agreements. First a weekend trip – later maybe a shared home.Goals don’t always mean the same thing for everyone. It’s important to regularly check and adjust them.</p>
+  <p>Support each other in personal plans. You are stronger together when you don’t suppress individuality.</p>
+  <p>Planning doesn’t kill spontaneity – it provides the security of knowing where you’re heading.</p>
+  <button onclick="nextScreen()">We build together</button>
+</div>
+
+<!-- Screen 17 -->
+<div class="screen" id="screen-17">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Growth After a Breakup</h2>
+  <p>A breakup hurts – but it can be the beginning of a new life. Allow yourself to grieve.</p>
+  <p>Don’t look for meaning right away. Sometimes time brings answers you can’t see now.</p>
+  <p>Write, talk, move. Even small routines help restore strength and a sense of control.</p>
+  <p>You don’t have to jump into a new relationship immediately. First, learn to be okay with yourself.</p>
+  <p>Growth begins where it seemed like the end.</p>
+  <button onclick="nextScreen()">I keep growing</button>
+</div>
+
+<!-- Screen 18 -->
+<div class="screen" id="screen-18">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Future and Love</h2>
+  <p>Imagine what you want your future to look like. And don’t wait for someone else to come and create it.</p>
+  <p>Learn from the past, but don’t stay in it. Love doesn’t come to “fix” – it comes to support what is already growing.</p>
+  <p>Cultivate hope, but build realistically. Love is both a choice and a feeling.</p>
+  <p>Don’t settle for less than what you know you deserve. Time doesn’t heal – your decision to grow does.</p>
+  <p>The future doesn’t come – you create it.</p>
+  <button onclick="nextScreen()">I create the future</button>
+</div>
+
+<!-- Screen 19 -->
+<div class="screen" id="screen-19">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Family Background and Childhood Patterns</h2>
+  <p>The family we grew up in often shapes how we love, argue, and react. Childhood patterns can unconsciously carry over into relationships – both helpful and harmful.</p>
+  <p>Recognize what you learned about love, boundaries, and emotions through your relationship with your parents. You are not bound to the past – you have the right to create new, healthier patterns.</p>
+  <p>Talking with your partner about family experiences can bring deeper understanding and closeness.Change begins with awareness.Think: which messages from childhood no longer serve your current relationship?</p>
+ <button onclick="nextScreen()">I choose healthy patterns</button>
+
+</div>
+
+<!-- Screen 20 -->
+<div class="screen" id="screen-19">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Recipe</h2>
+  <p>This app isn’t a game, but you can return to it as often as you need. There’s no need to rush. Its purpose is to remind you of what truly matters and to support you in moments of crisis.</p>
+  <p>Whenever you feel the need to clear your thoughts, move through the app at your own pace. Give yourself the space to reflect and listen within.</p>
+  <p>Your clarity and peace of mind are our goal.</p>
+  <button class="btn" onclick="window.location.href='index.html'">I am ready to observe life carefully</button>
+
+</div>
+
+<script>
+  function nextScreen() {
+    const screens = document.querySelectorAll('.screen');
+    let currentIndex = -1;
+
+    screens.forEach((screen, index) => {
+      if (screen.classList.contains('active')) {
+        screen.classList.remove('active');
+        currentIndex = index;
+      }
+    });
+
+    const nextIndex = currentIndex + 1;
+    if (nextIndex < screens.length) {
+      screens[nextIndex].classList.add('active');
+
+      // Update progress bar
+      const progress = ((nextIndex) / (screens.length - 1)) * 100;
+      document.getElementById('progress-bar').style.width = progress + '%';
+    }
+  }
+
+  function setScreenHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+
+  // Poziv pri učitavanju i kada se promeni veličina prozora (npr. okretanje telefona)
+  window.addEventListener('load', setScreenHeight);
+  window.addEventListener('resize', setScreenHeight);
+
+function setVhUnit() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+window.addEventListener('resize', setVhUnit);
+setVhUnit(); // pokreni odmah pri učitavanju
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The G.A.M.B.L.I.N.G. Protokol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <style>
+    html, body {
+    overflow-y: auto;
+   -webkit-overflow-scrolling: touch; /* Za glatko skrolovanje na iOS-u */
+   }
+
+
+    .progress-container {
+      width: 100%;
+      background-color: #ffe0b3; /* svetla narandžasta */
+      height: 6px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background-color: #ff4f00; /* Jarko crvena boja */
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .screen {
+      display: none;
+      padding: 20px;
+      background: #ffffff;
+      color: #444;
+      min-height: 100vh; /* koristi min-height da omogući skrolovanje ako je sadržaj veći */
+      padding-bottom: 80px; /* prostor za futer, dovoljno da se ne preklapa */
+      overflow-y: auto;
+     -webkit-overflow-scrolling: touch;
+    }
+     
+     .screen.active {
+      display: block;
+    }
+
+    .logo {
+      width: 100px;
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+    h2 {
+      background-color: #d3d3d3; /* Svetlija siva */
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    p {
+      background: #fff3e0; /* svetla narandžasta pozadina */
+      padding: 12px;
+      margin: 10px 0;
+      border-left: 4px solid #ff8c00; /* narandžasta boja */
+      border-radius: 8px;
+      line-height: 1.6em;
+    }
+
+    button {
+      background-color: #ff0000; /* Crvena boja */
+      color: white;
+      padding: 10px 20px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1em;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button:hover {
+      background-color: #cc0000; /* Tamnija crvena pri hover-u */
+    }
+
+    .header-text {
+      background-color: #808080; /* Siva boja */
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .logo {
+        width: 80px;
+      }
+
+      .progress-container {
+        height: 4px;
+      }
+
+      .screen {
+        padding: 15px;
+      }
+
+      button {
+        padding: 8px 16px;
+        font-size: 0.9em;
+      }
+
+      h2 {
+        font-size: 1.5em;
+      }
+
+      p {
+        font-size: 1em;
+      }
+    }
+@media (max-width: 400px) {
+  body {
+    font-size: 13px;
+  }
+
+  .logo {
+    width: 60px;
+  }
+
+  .header-text {
+    font-size: 1.2em;
+    padding: 8px 0;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  p {
+    font-size: 0.95em;
+    padding: 10px;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 0.85em;
+  }
+
+  .screen {
+    padding: 12px;
+  }
+
+  .progress-container {
+    height: 3px;
+  }
+
+  .progress-bar {
+    height: 3px;
+  }
+
+ }
+
+.header-text {
+  margin-bottom: 20px; /* Razmak između glavnog teksta i sledećeg dela */
+}
+
+.pocket-solution, .pocket-essentials {
+ background-color: #ff8c00; /* narandžasta boja */
+  padding: 10px; /* Unutrašnji razmak unutar pozadine */
+  margin-top: 10px; /* Razmak između header teksta i novih div-ova */
+  border-radius: 5px; /* Zaobljeni uglovi pozadine */
+}
+
+.pocket-solution {
+  font-weight: bold; /* Isticanje teksta u pocket-solution */
+}
+
+.pocket-essentials {
+  color: #555; /* Možeš promeniti boju za drugi deo teksta */
+}
+
+   </style>
+</head>
+<body>
+
+<div class="header-text">
+  Ground, Ask, Make, Break, Look, Imagine, Notice, Grow
+  <div class="pocket-solution"><strong>Small Pocket Solution</strong></div>
+  <div class="pocket-essentials">Pocket Essentials Collection</div>
+</div>
+
+
+<div class="progress-container">
+  <div class="progress-bar" id="progress-bar"></div>
+</div>
+
+
+<!-- Intro Screen -->
+<div class="screen active" id="intro-screen">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+ <h2>
+  Welcome to The G.A.M.B.L.I.N.G. – Change App<br>
+  Quick Control and Breaking Free from Gambling
+</h2>
+  <p>
+  Gambling is disguised as entertainment, while behind the flashy advertisements and promises lies a serious problem that affects a large number of people and their families.
+</p>
+<p>
+  Free yourself from this obsessive need and its consequences!
+</p>
+<button onclick="nextScreen()">OK</button>
+</div>
+
+<!-- Screen 1 -->
+<div class="screen" id="screen-1">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>The G.A.M.B.L.I.N.G. - Step by step</h2>
+  <p>
+  <strong>G – Ground your purpose:</strong> Remember what drives you. Freedom, health, family – that's your strength. 
+  <strong>A – Ask for support:</strong> Talking helps. You don’t have to carry this burden alone. 
+  <strong>M – Make a plan:</strong> When the urge strikes, you know what to do. A plan gives you security. 
+  <strong>B – Break the pattern:</strong> Change your routine, change your path. Even the smallest step can change the course. 
+  <strong>L – Look at alternatives:</strong> There are healthier ways to meet your needs. 
+  <strong>I – Imagine consequences:</strong> Think about where your choice leads – now and in the next year. 
+  <strong>N – Notice your triggers:</strong> Which thoughts, feelings, places, or people spark the urge? Stay aware. 
+  <strong>G – Grow beyond gambling:</strong> You are not your past. Build a life full of meaning and freedom.
+</p>
+  <button onclick="nextScreen()">Begin your transformation</button>
+</div>
+
+<!-- Screen 2 -->
+<div class="screen" id="screen-2">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>The G.A.M.B.L.I.N.G. - Pause</h2>
+  <p><strong>Pause and reflect:</strong> </p>
+  <p><strong>Is gambling more than just fun?</strong> Do you often think about your next bet?</p>
+<p><strong>Feeling guilty or uneasy?</strong> That’s a sign. Fun can turn into habit — and habit into addiction.</p>
+<p><strong>This isn't the full solution,</strong> but it’s the first step. You’re here. That matters.</p>
+  <button onclick="nextScreen()">Recognize within yourself</button>
+</div>
+
+<!-- Screen 3 -->
+<div class="screen" id="screen-3">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>The G.A.M.B.L.I.N.G. - Game or Escape?</h2>
+  <p><strong>Do you gamble to escape reality?</strong> It’s not a game when it hurts.</p>
+<p><strong>Problem gamblers need help —</strong> they’re not in control. Money loses meaning. It’s just another bet.</p>
+<p><strong>Feeling restless when not gambling?</strong> That’s a sign. You see gambling as your next shot at happiness.</p>
+<p><strong>Gambling makes you drift</strong> from family, friends, and responsibilities.</p>
+  <button onclick="nextScreen()">Free yourself from illusion</button>
+</div>
+
+<!-- Screen 4 -->
+<div class="screen" id="screen-4">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>The G.A.M.B.L.I.N.G. -The Moment It All Begins</h2>
+  <p>When was your first bet?What attracted you, and how did it make you feel?</p>
+  <p>That mix of curiosity, excitement, and peer pressure can lead to serious harm.You tell yourself you're in control.You say it’s fun, but you feel pressure and restlessness.</p>
+  <p>You avoid facing how much you've truly lost.The money you lost can’t be brought back.</p>
+  <p>Going back to gambling means losing your money — and your life’s time.Gambling is a business built to win at the gambler’s cost.</p>
+  <button onclick="nextScreen()">Take responsibility</button>
+</div>
+
+<!-- Screen 5 -->
+<div class="screen" id="screen-5">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>The G.A.M.B.L.I.N.G. – The Repeating Cycle</h2>
+  <p>Hope. Loss. Guilt. Then gambling... again.</p>
+  <p>💭 Sounds familiar?</p>
+  <p>The longer it lasts, the deeper it traps you.</p>
+  <p>Do you lose track of time while gambling?</p>
+  <p>Do you pretend it’s not a big deal?</p>
+  <p>Deep down, you know it’s wrong — but you keep going.</p>
+  <button onclick="nextScreen()">Break the cycle</button>
+</div>
+
+
+<!-- Screen 6 -->
+<div class="screen" id="screen-6">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>The G.A.M.B.L.I.N.G. – Money Isn't the Reason</h2>
+ <p><strong>The thrill, the tension, the illusion of control.</strong> Gambling hides an inner emptiness.</p>
+<p><strong>What is it that you're truly missing in life?</strong> Let’s stop trying to heal the soul with numbers — face the truth instead.</p>
+<p><strong>Loans, overdrafts, and debts are waiting to destroy you.</strong> Have you fallen into the trap of gambling without money?</p>
+<p><strong>The people you love are suffering —</strong> or they soon will.</p>
+  <button onclick="nextScreen()">Heal inner wounds</button>
+</div>
+
+<!-- Screen 7 -->
+<div class="screen" id="screen-7">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+ <h2>The G.A.M.B.L.I.N.G. – The Cost of Restlessness</h2>
+  <p>Do you feel a knot in your stomach after gambling? Your body isn’t lying – it’s warning you.</p>
+  <p><strong>Constant tension drains you.</strong> The mistake lies in the decision. Change that decision.</p>
+  <p><strong>Your wallet, relationships, and job will suffer.</strong> The false desire to continue is leading you toward ruin.</p>
+  <p><strong>Your life and true friends aren’t in the casino.</strong> Real connections are outside of the game.</p>
+  <button onclick="nextScreen()">Recognize the consequences</button>
+</div>
+
+<!-- Screen 8 -->
+<div class="screen" id="screen-8">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>The G.A.M.B.L.I.N.G. – Be a Fighter</h2>
+  <p><strong>Someone else is always suffering.</strong> Does anyone know what you're going through?</p>
+<p><strong>People can't help if they don't know.</strong> You're not alone in this, but you're also not the only one suffering.</p>
+<p><strong>It’s worth fighting for yourself and for others.</strong> Gambling shuts the door to closeness.</p>
+<p><strong>You’re not weak.</strong> You are wounded, and you can heal.</p>
+
+  <button onclick="nextScreen()">Fight for yourself</button>
+</div>
+
+<!-- Screen 9 -->
+<div class="screen" id="screen-9">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>The G.A.M.B.L.I.N.G. – Friend or Foe?</h2>
+ <p><strong>If you are reading this, it means there is a part of you that wants to survive.</strong> You are not weak – you are fighting for your life.</p>
+<p><strong>That part is not weak.</strong> It’s your ally, leading you toward freedom.</p>
+<p><strong>That friend within you says:</strong> Enough! It wants peace, dignity, and a new beginning.</p>
+<p><strong>Many people think they can’t stop gambling, but that’s not true.</strong> The voice telling you “one more game won’t hurt” is the voice of your enemy.</p>
+  <button onclick="nextScreen()">Choose freedom</button>
+</div>
+
+<!-- Screen 10 -->
+<div class="screen" id="screen-10">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+   <h2>The G.A.M.B.L.I.N.G. – Possibilities</h2>
+  <p>
+  <strong>If you stopped gambling, what would you do?</strong> A whole new world of possibilities would open up for you.<br>
+  <strong>How would your day look if gambling wasn’t a part of it?</strong> Imagine a day full of clarity and purpose.
+</p>
+<p>
+  <strong>Who would you want to be?</strong> The person who is in control, making decisions based on growth rather than impulse.<br>
+  <strong>Start imagining, writing, planning.</strong> Your new life begins the moment you decide to create it.
+</p>
+<p>
+  <strong>A new life begins in your mind.</strong> Everything starts with the decision to change your mindset.<br>
+  <strong>Without gambling, you gain more time, money, and energy.</strong> You can choose how to invest them in a better future.
+</p>
+  <button onclick="nextScreen()">I Decide My Future</button>
+</div>
+
+<!-- Screen 11 -->
+<div class="screen" id="screen-11">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>The G.A.M.B.L.I.N.G. – Strengthening Freedom</h2>
+ <p><strong>Every time you resist the urge, you strengthen your freedom.</strong> Every small victory is like a brick in the foundation of your freedom.</p>
+<p><strong>Don’t seek perfection – seek consistency.</strong> Day by day. That’s how lives change.</p>
+<p><strong>Plan your day: How? Who with? When?</strong> All around you, there are people from whom you can learn.</p>
+<p><strong>The future is built in the present.</strong></p>
+  <button onclick="nextScreen()">Keep Building</button>
+</div>
+
+<!-- Screen 12 -->
+<div class="screen" id="screen-12">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+   <h2>The G.A.M.B.L.I.N.G. – Who Are Your People</h2>
+  <p><strong>Who do you trust?</strong> Think about the people in your life who are reliable and supportive. 
+<strong>Who could be your support?</strong> Identify those who are always there for you and ready to help.</p>
+<p><strong>True friends want your healing.</strong> They will stand by you, not judge you, and cheer for your growth. 
+<strong>Who could you tell the truth to?</strong> Be honest with those who understand and want the best for you.</p>
+<p><strong>Few succeed alone.</strong> It’s always easier with support. You don’t have to do it on your own.</p>
+   <button onclick="nextScreen()">I will find support</button>
+</div>
+
+<!-- Screen 13 -->
+<div class="screen" id="screen-13">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+   <h2>The G.A.M.B.L.I.N.G. – Support is real</h2>
+ <p><strong>There are people who don’t judge because they understand.</strong> They offer you unconditional support.</p>
+<p><strong>Support is available.</strong> There are resources and people ready to help you every step of the way.</p>
+<p><strong>Connection is the healing that works.</strong> Reach out, and you will find strength in the support of others.</p>
+  <button onclick="nextScreen()">Reach out</button>
+</div>
+
+<!-- Screen 14 -->
+<div class="screen" id="screen-14">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+ <h2>The G.A.M.B.L.I.N.G. – Stay Ready</h2>
+  <p><strong>The day will come when you feel the urge to return to gambling.</strong> When that happens, remember the faces of those you love. 
+<strong>Prepare your S.O.S. plan — what you will do when a crisis hits.</strong> Whom you will call, where you will go, the words you will say to yourself.</p>
+<p><strong>Crises come and go.</strong> Stay ready. 
+<strong>Replace gambling with activities that help you grow.</strong> Every moment of growth builds a stronger you.</p>
+   <button onclick="nextScreen()">I Am Ready</button>
+</div>
+
+<!-- Screen 15-->
+<div class="screen" id="screen-15">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+ <h2>The G.A.M.B.L.I.N.G. – Overcome the challenges</h2>
+  <p><strong>Gambling is not a character flaw — it’s a condition you can overcome.</strong> It doesn’t define you. 
+<strong>There is an entire organized system designed to lure you back.</strong> Be aware and stay strong.</p>
+<p><strong>No success is perfectly straight-lined.</strong> Keep making good choices, and the direction will be forward.</p>
+   <button onclick="nextScreen()">Stay Strong</button>
+</div>
+
+<!-- Screen 16 -->
+<div class="screen" id="screen-16">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>The G.A.M.B.L.I.N.G. – Identity</h2>
+<p><strong>You are not a gambler.</strong> You are a person going through a difficult time.</p>
+<p><strong>Strength, character, and wisdom</strong> are built through struggle.</p>
+<p><strong>Free yourself from boredom and fear.</strong> Boredom shows that you haven’t invested yourself in something meaningful, and fear discourages you from moving forward.</p>
+<p><strong>Save and plan something beautiful</strong> for yourself and those you love. Take back control.</p>
+   <button onclick="nextScreen()">I Choose My True Self</button>
+</div>
+
+<!-- Screen 17 -->
+<div class="screen" id="screen-17">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+   <h2>The G.A.M.B.L.I.N.G. – Protect What Matters</h2>
+  <p><strong>Parents, siblings, partners, children – they are all part of your struggle.</strong> They are also affected by what you are going through.</p>
+<p><strong>Free them from this cycle of horror.</strong> Be an example of courage, ideas, and dedication.</p>
+<p><strong>Gambling organizers often use threats and blackmail.</strong> Debts owed to them can escalate into physical threats.</p>
+   <button onclick="nextScreen()">I Choose to Protect</button>
+</div>
+
+<!-- Screen 18 -->
+<div class="screen" id="screen-18">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+   <h2>The G.A.M.B.L.I.N.G. – Protect Your Loved Ones</h2>
+  <p><strong>Your family could become a target if you don't take action.</strong> Protect them by protecting yourself.</p>
+<p><strong>Losing money is only the beginning.</strong> Fear, violence, and destruction often follow.</p>
+<p><strong>Decisions are not made just once.</strong> They are made every day, again and again.</p>
+   <button onclick="nextScreen()">Act Before It’s Too Late</button>
+</div>
+
+<!-- Screen 19 -->
+<div class="screen" id="screen-19">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+ <h2>The G.A.M.B.L.I.N.G. – Recipe</h2>
+  <p><strong>This application is not a game, but you can go through it as many times as you want.</strong> Take your time. Its purpose is to remind you of true values and to encourage you during moments of crisis.</p>
+<p><strong>Whenever you feel the need to clarify things for yourself,</strong> move through this application as slowly as necessary. Give yourself time to think and reflect.</p>
+<p><strong>Your success is the fulfillment of our goal.</strong></p>
+  <button class="btn" onclick="window.location.href='index.html'">A New Step Forward</button>
+</div>
+
+<script>
+  function nextScreen() {
+    const screens = document.querySelectorAll('.screen');
+    let currentIndex = -1;
+
+    screens.forEach((screen, index) => {
+      if (screen.classList.contains('active')) {
+        screen.classList.remove('active');
+        currentIndex = index;
+      }
+    });
+
+    const nextIndex = currentIndex + 1;
+    if (nextIndex < screens.length) {
+      screens[nextIndex].classList.add('active');
+
+      // Update progress bar
+      const progress = ((nextIndex) / (screens.length - 1)) * 100;
+      document.getElementById('progress-bar').style.width = progress + '%';
+    }
+  }
+
+  function setScreenHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+
+  // Poziv pri učitavanju i kada se promeni veličina prozora (npr. okretanje telefona)
+  window.addEventListener('load', setScreenHeight);
+  window.addEventListener('resize', setScreenHeight);
+
+function setVhUnit() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+window.addEventListener('resize', setVhUnit);
+setVhUnit(); // pokreni odmah pri učitavanju
+
+
+</script>
+
+</body>
+</html>

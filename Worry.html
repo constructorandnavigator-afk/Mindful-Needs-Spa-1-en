@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The W. O. R. R. Y. Protocol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <style>
+    html, body {
+    overflow-y: auto;
+   -webkit-overflow-scrolling: touch; /* Za glatko skrolovanje na iOS-u */
+   }
+
+
+    .progress-container {
+      width: 100%;
+      background-color: #3b7a57; /* Maslinasto zelena pozadina */
+      height: 6px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background-color: #ccff33; /* Sjajno žuto-zelena */
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .screen {
+      display: none;
+      padding: 20px;
+      background: #CDEAC0; /* svetlo zelena pozadina sekcija */
+      color: #444;
+      min-height: 100vh; /* koristi min-height da omogući skrolovanje ako je sadržaj veći */
+      padding-bottom: 80px; /* prostor za futer, dovoljno da se ne preklapa */
+      overflow-y: auto;
+     -webkit-overflow-scrolling: touch;
+    }
+     
+     .screen.active {
+      display: block;
+    }
+
+    .logo {
+      width: 100px;
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+   h2 {
+  background-color:  #4A90E2; 
+  color:  #FFFFFF; /* zlatan tekst */
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+
+    p {
+      background: #f1f8ec; /* veoma svetla nijansa zelene */
+      padding: 12px;
+      margin: 10px 0;
+      border-left: 4px solid #556B2F; /* maslinasto zelena linija */
+      border-radius: 8px;
+      line-height: 1.6em;
+    }
+
+    button {
+      background-color: #4A90E2; 
+      color: white;
+      padding: 10px 20px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1em;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button:hover {
+     background-color: #2F6F9F; 
+    }
+
+    .header-text {
+       background-color: #556B2F; /* maslinasto zelena */
+      color: #B0B0B0;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .logo {
+        width: 80px;
+      }
+
+      .progress-container {
+        height: 4px;
+      }
+
+      .screen {
+        padding: 15px;
+      }
+
+      button {
+        padding: 8px 16px;
+        font-size: 0.9em;
+      }
+
+      h2 {
+        font-size: 1.5em;
+      }
+
+      p {
+        font-size: 1em;
+      }
+    }
+@media (max-width: 400px) {
+  body {
+    font-size: 13px;
+  }
+
+  .logo {
+    width: 60px;
+  }
+
+  .header-text {
+    font-size: 1.2em;
+    padding: 8px 0;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  p {
+    font-size: 0.95em;
+    padding: 10px;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 0.85em;
+  }
+
+  .screen {
+    padding: 12px;
+  }
+
+  .progress-container {
+    height: 3px;
+  }
+
+  .progress-bar {
+    height: 3px;
+  }
+
+ }
+
+.header-text {
+  margin-bottom: 20px; /* Razmak između glavnog teksta i sledećeg dela */
+}
+
+.pocket-solution, .pocket-essentials {
+ background-color:  #4A90E2; 
+  padding: 10px; /* Unutrašnji razmak unutar pozadine */
+  margin-top: 10px; /* Razmak između header teksta i novih div-ova */
+  border-radius: 5px; /* Zaobljeni uglovi pozadine */
+}
+
+.pocket-solution {
+  font-weight: bold; /* Isticanje teksta u pocket-solution */
+  color: #FFFFFF;
+}
+
+.pocket-essentials {
+  color: #FFD700; /* Možeš promeniti boju za drugi deo teksta */
+}
+
+   </style>
+</head>
+<body>
+
+<div class="header-text">
+   Wake up, Open, Release, Realize, You
+  <div class="pocket-solution"><strong>Small Pocket Solution</strong></div>
+  <div class="pocket-essentials">Pocket Essentials Collection</div>
+</div>
+
+
+<div class="progress-container">
+  <div class="progress-bar" id="progress-bar"></div>
+</div>
+
+
+<!-- Intro Screen -->
+<div class="screen active" id="intro-screen">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>
+  Welcome to the W. O. R. R. Y. App<br>
+  Quick Relief and Overcoming Anxiety
+</h2>
+   <p><strong>W – Wake up.</strong> Wake up to the present moment — this is where your strength lives.  
+<strong>O – Open.</strong> Open your mind to new perspectives, not just fearful thoughts.</p>
+
+<p><strong>R – Release.</strong> Release what you can’t control — peace begins where control ends.  
+<strong>R – Realize.</strong> Realize that most worries never come true — thoughts are not facts.</p>
+
+<p><strong>Y – You.</strong> You have the power to choose calm over fear, one step at a time.</p>
+   <button onclick="nextScreen()">Start</button>
+</div>
+
+<!-- Screen 1 -->
+<div class="screen" id="screen-1">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>The W. O. R. R. Y. Protocol - Start</h2>
+  <p><strong>I feel anxiety or fear.</p>
+  
+  <button onclick="nextScreen()">Continue</button>
+</div>
+
+<!-- Screen 2 -->
+<div class="screen" id="screen-2">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>The W. O. R. R. Y. Protocol - Risk</h2>
+  <p><strong>Do you think there is currently an increased level of discomfort?</p>
+  <button onclick="nextScreen()">Continue</button>
+</div>
+
+<!-- Screen 3 -->
+<div class="screen" id="screen-3">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>The W. O. R. R. Y. Protocol - Truths</h2>
+  <p><strong>Step by step, the solution is in sight!</p>
+  <p><strong>Every storm passes!</p>
+  <p><strong>The right steps lead to a solution, you are on the right path!</p>
+  <p><strong>You are not alone, there are people who help!</p>
+  <button onclick="nextScreen()">Confirm</button>
+</div>
+
+<!-- Screen 4 -->
+<div class="screen" id="screen-4">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>The W. O. R. R. Y. Protocol - Action</h2>
+  <p><strong>Can I change anything about what’s worrying me by taking action?</p>
+  <button onclick="nextScreen()">Yes</button>
+</div>
+
+<!-- Screen 5 -->
+<div class="screen" id="screen-5">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>The W. O. R. R. Y. Protocol - Make a plan</h2>
+
+  <p><span style="color: #D5006D;"><strong>What?</strong></span> – Answers the question of what exactly you want to achieve. This is a clear and attainable goal, because without it, there is no direction for action. <span style="color: #D5006D;"><strong>When?</strong></span> – Answers the question of when you will take action. A time frame helps you avoid procrastination and gives your plan structure.</p>
+
+  <p><span style="color: #D5006D;"><strong>How?</strong></span> – Answers the question of how you will implement your plan. These are specific actions you will take to reach your goal. <span style="color: #D5006D;"><strong>Adapt</strong></span> – Answers the question of how you will adapt if you face obstacles. Flexibility helps you stay on track and find new ways to achieve your goal. <span style="color: #D5006D;"><strong>Why?</strong></span> – Answers the question of why it’s important for you to do this. A clear reason helps you stay motivated and persevere, even when it's hard.</p>
+
+  <button onclick="nextScreen()">I understand</button>
+</div>
+
+
+<!-- Screen 6 -->
+<div class="screen" id="screen-6">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>The W. O. R. R. Y. Protocol - Time and Trust</h2>
+  <p>Determine whether your concern is based on facts or if you're not quite sure.</p>
+  <p>Will the potential problem still be realistically significant in 2 months?</p>
+  <p>Ask someone you trust if they confirm the seriousness of the problem.</p>
+  <button onclick="nextScreen()">Alright</button>
+</div>
+
+<!-- Screen 7 -->
+<div class="screen" id="screen-7">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>The W. O. R. R. Y. Protocol - Distancing</h2>
+  
+  <p>Your plans are more important than all the worries troubling you.<br>Spend some pleasant time daydreaming and planning joyful moments.</p>
+  <p>Return to the difficulties later.<br>You’ll be rested, and it will be easier to find a solution.</p>
+  <p>Distance yourself from negative thoughts—they lead you in the wrong direction.<br>Dedicate your day to anything that brings you joy.</p>
+
+  <button onclick="nextScreen()">Super</button>
+</div>
+
+
+
+<!-- Screen 8 -->
+<div class="screen" id="screen-8">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>The W. O. R. R. Y. Protocol - Together</h2>
+  <p>Together with the person you love, consider your options.</p>
+  <p>Imagine as many details as you can.</p>
+  <p>Write down what you need to achieve your plans and take the first step.</p>
+  <p>Not every thought is reality</p>
+  <p>Emotions are not a threat—they simply show that I’m alive.</p>
+  <p>I have someone who supports me</p>
+  <button onclick="nextScreen()">I feel better</button>
+</div>
+
+<!-- Screen 9 -->
+<div class="screen" id="screen-9">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>The W. O. R. R. Y. Protocol - Meaning</h2>
+  <p>Know that everything will find its meaning if you observe carefully what is weighing on you and avoid making hasty decisions.</p>
+  <p>People solve even the most difficult problems.</p>
+  <p>Everyone progresses at their own pace.</p>
+  <button onclick="nextScreen()">I observe carefully and without rushing</button>
+</div>
+
+<!-- Screen 10 -->
+<div class="screen" id="screen-10">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>The W. O. R. R. Y. Protocol - Satisfaction</h2>
+  <p>Don’t wish for too much at once.<br>Start with what matters most to you.</p>
+<p>That way, you'll feel the satisfaction of success.<br>All people feel both satisfaction and dissatisfaction.</p>
+<p>Let’s stay forever young and in search of something deeper and more meaningful.<br>That something moves us in the direction of growth.<br>It gives us the courage to learn from every experience.</p>
+
+  <button onclick="nextScreen()">I am brave</button>
+</div>
+
+<!-- Screen 11 -->
+<div class="screen" id="screen-11">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>The W. O. R. R. Y. Protocol - Change</h2>
+ <p><strong style="color: #d63384;">Change, grow, but stay YOU!</strong><br>
+<strong style="color: #d63384;">A person completely renews all the cells in their body:</strong></p>
+
+<p><strong style="color: #d63384;">Skin:</strong> 30 days<br>
+<strong style="color: #d63384;">Muscles:</strong> 15–30 days</p>
+
+<p><strong style="color: #d63384;">Red blood cells:</strong> 120 days<br>
+<strong style="color: #d63384;">Bones:</strong> 10 years<br>
+<strong style="color: #d63384;">Everything changes, and you grow along with those changes.</strong></p>
+
+  <button onclick="nextScreen()">I am ready</button>
+</div>
+
+<!-- Screen 12 -->
+<div class="screen" id="screen-12">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>The W. O. R. R. Y. Protocol - Thoughts and Emotions</h2>
+  <p>We all often react impulsively to emotions. What matters is knowing that our thoughts control our emotions.</p>
+  <p>Let’s create only positive thoughts.</p>
+  <p>Also, our behavior is influenced 60% by our genes and 40% by our environment.</p>
+  <p>Know this! The environment has great power over us, BUT in reality, WE can also choose our environment.</p>
+  <p>I will choose: Where? What? How? With whom?</p>
+  <button onclick="nextScreen()">That's right</button>
+</div>
+
+<!-- Screen 13 -->
+<div class="screen" id="screen-13">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>The W. O. R. R. Y. Protocol - The Recipe</h2>
+  <p>This app gets the runaway train of pointless thoughts back on track in just 25 seconds.</p>
+  <p>It’s not made for entertainment, but you can repeat it as many times as you want, whenever you feel the need.</p>
+  <p>Our recipe: 3 times a day, 3 rounds each time.</p>
+  <button class="btn" onclick="window.location.href='index.html'">I'm starting another round</button>
+</div>
+<script>
+  function nextScreen() {
+    const screens = document.querySelectorAll('.screen');
+    let currentIndex = -1;
+
+    screens.forEach((screen, index) => {
+      if (screen.classList.contains('active')) {
+        screen.classList.remove('active');
+        currentIndex = index;
+      }
+    });
+
+    const nextIndex = currentIndex + 1;
+    if (nextIndex < screens.length) {
+      screens[nextIndex].classList.add('active');
+
+      // Update progress bar
+      const progress = ((nextIndex) / (screens.length - 1)) * 100;
+      document.getElementById('progress-bar').style.width = progress + '%';
+    }
+  }
+
+  function setScreenHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+
+  // Poziv pri učitavanju i kada se promeni veličina prozora (npr. okretanje telefona)
+  window.addEventListener('load', setScreenHeight);
+  window.addEventListener('resize', setScreenHeight);
+
+function setVhUnit() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+window.addEventListener('resize', setVhUnit);
+setVhUnit(); // pokreni odmah pri učitavanju
+
+
+</script>
+
+</body>
+</html>

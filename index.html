@@ -1,0 +1,294 @@
+
+<<!DOCTYPE html>
+<html lang="en" id="index-screen">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mindful Needs – “Support and focus at your fingertips” </title>
+  <link rel="icon" type="image/png" href="Mindful_Needs_Digital_Spa_Logo.png">
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+      overflow-x: hidden;
+    }
+
+    .fade {
+      opacity: 0;
+      transition: opacity 3.5s ease-in-out; /* Brži fade efekat */
+      pointer-events: none;
+    }
+
+    .fade.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    
+
+    #splash img {
+      width: 150px;
+      max-width: 70%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    #splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Pomera elemente ka vrhu */
+  padding-top: 60px; /* Odmak od samog vrha – podešavaš po potrebi */
+  z-index: 9999;
+  text-align: center;
+}
+
+
+#splash h1 {
+  font-size: 20px;
+  color: #333;
+  padding: 0 20px;
+  line-height: 1.4;
+}
+
+
+    #main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      min-height: 100vh;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+
+    .main-logo {
+      width: 140px;
+      max-width: 50%;
+      height: auto;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .main-logo {
+        width: 90px;
+        max-width: 70%;
+      }
+      #splash h1 {
+        font-size: 18px;
+        padding: 0 15px;
+      }
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #666;
+      margin-top: -20px;
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 40px;
+      color: #333;
+      line-height: 1.3;
+      padding: 0 10px;
+    }
+
+    .grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .app-icon {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .app-icon:hover {
+      transform: scale(1.1);
+    }
+
+    .app-label {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .app-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer {
+      margin-top: 50px;
+      background-color: #333;
+      color: #fff;
+      padding: 10px 0;
+      font-size: 14px;
+      text-align: center;
+      line-height: 1.4;
+      width: 100%;
+    }
+/* Banner za Add to Home Screen */
+    #a2hs-banner {
+      display: none;
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      padding: 15px;
+      background: #3b82f6;
+      color: white;
+      border-radius: 10px;
+      text-align: center;
+      z-index: 9999;
+    }
+
+    #a2hs-button {
+      margin-left: 15px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      background: white;
+      color: #3b82f6;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Dugme za povratak na sajt */
+    #return-site {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      padding: 8px 12px;
+      background: #3b82f6;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 1000;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div id="splash" class="fade active">
+    <img src="Mindful_Needs_Digital_Spa_Logo.png" alt="Glavni Logo">
+    <p class="subtitle">Mindful Needs Digital Spa</p>
+    <h1>"Support and focus at your fingertips"</h1>
+  </div>
+
+  <div id="main-content" class="fade">
+    <div class="grid">
+      <div class="app-block">
+        <img src="logobriga.png" class="app-icon" alt="The Worry Protocol" id="open-worry">
+        <div class="app-label">The W.O.R.R.Y. Protocol</div>
+      </div>
+
+      <div class="app-block">
+        <img src="LogoLjubav.png" class="app-icon" alt="The Love Protocol" id="open-love">
+        <div class="app-label">The L.O.V.E. Protocol</div>
+      </div>
+
+      <div class="app-block">
+        <img src="LogoRiskTrack.png" class="app-icon" alt="The Gambling Protocol" id="open-gambling">
+        <div class="app-label">The G.A.M.B.L.I.N.G. Protocol</div>
+      </div>
+    </div>
+
+     <div class="footer">
+      <div><strong>MINDFUL NEEDS SPA</strong></div>
+      <div>Pocket Essentials Collection</div>
+    </div>
+  </div>
+ <!-- Button to Return to Website -->
+  <a href="https://www.systemofexcellence.online/mindful-needs" id="return-site">Return to Website</a>
+
+  <!-- Keep the App -->
+  <div id="a2hs-banner">
+    Add 3-in-1 SPA 1 to your screen for quick access to all protocols!
+    <button id="a2hs-button">Add</button>
+  </div>
+
+  <script>
+    function openApp(url) {
+      document.getElementById('main-content').classList.remove('active');
+      setTimeout(function() {
+        window.location.href = url;
+      }, 1500);
+    }
+
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.getElementById('splash').classList.remove('active');
+        document.getElementById('main-content').classList.add('active');
+      }, 3000);
+    });
+
+    document.getElementById('open-worry').addEventListener('click', function() {
+      openApp('worry.html');
+    });
+
+    document.getElementById('open-love').addEventListener('click', function() {
+      openApp('Love.html');
+    });
+
+    document.getElementById('open-gambling').addEventListener('click', function() {
+      openApp('gambling.html');
+    });
+
+    // PWA: Add to Home Screen
+    let deferredPrompt;
+    const banner = document.getElementById('a2hs-banner');
+    const button = document.getElementById('a2hs-button');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      banner.style.display = 'block';
+    });
+
+    button.addEventListener('click', async () => {
+      banner.style.display = 'none';
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log('User choice:', outcome);
+        deferredPrompt = null;
+      }
+    });
+
+    // Service worker registration
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('Service Worker registered'))
+        .catch(err => console.log('Service Worker registration failed:', err));
+    }
+  </script>
+
+</body>
+</html>
