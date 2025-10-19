@@ -6,9 +6,9 @@ const urlsToCache = [
   'logobriga.png',
   'LogoLjubav.png',
   'LogoRiskTrack.png',
-  'worry.html',
+  'Worry.html',
   'Love.html',
-  'gambling.html'
+  'Gambling.html'
 ];
 
 
@@ -41,5 +41,6 @@ self.addEventListener('fetch', (event) => {
       })
   );
 });
+
 
 
